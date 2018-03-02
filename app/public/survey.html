@@ -249,32 +249,51 @@
     });
     return valid;
   }
-$(".container").on("submit", function(event){
+$("#submit").on("click", function(event){
+  console.log("Click")
   event.preventDefault();
 
-  if (validate()){
-    var tData = $(".container").serializeArray()
-
-    userData = {
-      name: tData[0].value,
-      photo: tData[1].value,
-      score:[]
-    };
-    for(var i = 2; i < tData.length; i++){
-      userData.score.push(tData[i].value)
-    }
-    console.log(userData)
+  var newFriend = {
+    name: $("#name").val() .trim(),
+    photo: $("#photo").val() .trim(),
+    score: []
   };
-  $.post("/api/friendsData", JSON.stringify(userData), function(data){
-    $("#match-name").text(data.name);
-    $("#match-img").attr("src", data.photo);
-    $("#results-modal").modal("toggle");
+
+  var q1 = $("#q1");
+  var q2 = $("#q2");
+  var q3 = $("#q3");
+  var q4 = $("#q4");
+  var q5 = $("#q5");
+  var q6 = $("#q6");
+  var q7 = $("#q7");
+  var q8 = $("#q8");
+  var q9 = $("#q9");
+  var q10 = $("#q10");
+
+
+  // if (validate()){
+  //   var tData = $(".container").serializeArray()
+
+  //   userData = {
+  //     name: tData[0].val(),
+  //     photo: tData[1].val(),
+  //     score:[]
+  //   };
+  //   for(var i = 2; i < tData.length; i++){
+  //     userData.score.push(tData[i].value)
+  //   }
+  //   console.log(userData)
+  // };
+  // $.post("/api/friendsData", JSON.stringify(userData), function(data){
+  //   $("#match-name").text(data.name);
+  //   $("#match-img").attr("src", data.photo);
+  //   $("#results-modal").modal("toggle");
 
   }
 
-  )
+//   )
 
-})
+// })
 
 </script>
 </body>
