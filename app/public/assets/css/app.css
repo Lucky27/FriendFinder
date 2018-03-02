@@ -1,0 +1,45 @@
+body{
+	background: url("../image/pexel.jpeg") no-repeat;
+	background-size: cover; 
+	min-height: 100vh;
+}
+
+.content-wrap {
+	background-color: rgba(255,255,255, .1);
+	min-height: 100vh;
+}
+.content-wrap:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.main-content {
+	padding-top: 5%;
+}
+
+
+li:hover{
+	color:red;
+}
+
+li{
+	font-size:25px;
+	color:black;
+}
+button:hover{
+	color:white;
+	background-color:blue;
+}
+
+button{
+	height:40px;
+	width:120px;
+	margin:10px;
+	border-radius:10px;
+}
+
+h1:hover{
+	color:green;
+}
+

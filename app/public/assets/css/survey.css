@@ -1,0 +1,39 @@
+.jumbotron{
+	text-align: center;
+	opacity: (0.0);
+}
+
+li:hover{
+	color:red;
+	/*font-size: 20px;*/
+}
+
+li{
+	font-size:25px;
+	color:white;
+}
+button:hover{
+	color:white;
+	background-color:blue;
+}
+
+button{
+	height:40px;
+	width:120px;
+	margin:10px;
+	border-radius:10px;
+}
+
+h1:hover{
+	color:green;
+}
+
+h1{
+	font-size:50px;
+}
+
+body{
+	background-image: url("./image/pexel.jpeg")
+
+}
+
