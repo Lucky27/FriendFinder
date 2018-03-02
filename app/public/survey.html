@@ -24,7 +24,7 @@
 	
 	
 </div>
-<div class="container">
+<form class="container">
 	<form role="form">
 		<div class="form-group">
            <label for="reserve-name">Name</label>
@@ -36,8 +36,6 @@
            <input type="text" id="photo" class="form-control" required="">
         </div>
 	</form>
-
-</div>
 
 	<div class="row">
 		<div class= "col-lg-12" id="questions">
@@ -202,15 +200,95 @@
  </div>
 </div>
 
+</form>
  <br>
 
 <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-repeat" aria-hidden="true"></i>
      Submit</button>
-  <br>
-  <br>
 
-	
-<!-- <script type="text/javascript" src=".asset/javascript/friends.js"></script> -->
+<div id="results-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">Press
+        </button>
+        <h2 class="modal-title">
+          <strong>Match</strong>
+        </h2>
+         </div>
+      <div class="modal-body">
+        <h2 id = "match-name"></h2>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">End</button>
+      </div>
+    </div>
+    <div class="modal-content">
+      <img id ="match-img"></img>
+    </div>  
+  </div>
+  </div>
+</div>
+
+
 <script src="https://code.jquery.com/jquery.js"></script>
+
+<script type="text/javascript">
+  var userData;
+
+  function validate(){
+    var valid = true;
+    $(".form-control").each(function(){
+      if($(this).val() === ""){
+        valid = false;
+      }
+    })
+    $(".chosen-select").each(function(){
+      if ($(this).val() === ""){
+        valid = false;
+      }
+    });
+    return valid;
+  }
+$(".container").on("submit", function(event){
+  event.preventDefault();
+
+  if (validate()){
+    var tData = $(".container").serializeArray()
+
+    userData = {
+      name: tData[0].value,
+      photo: tData[1].value,
+      score:[]
+    };
+    for(var i = 2; i < tData.length; i++){
+      userData.score.push(tData[i].value)
+    }
+    console.log(userData)
+  };
+  $.post("/api/friendsData", JSON.stringify(userData), function(data){
+    $("#match-name").text(data.name);
+    $("#match-img").attr("src", data.photo);
+    $("#results-modal").modal("toggle");
+
+  }
+
+  )
+
+})
+
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
